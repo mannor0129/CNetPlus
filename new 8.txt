@@ -1,0 +1,28 @@
+C2
+config t
+vlan 67
+ name JPMorgan.com
+ exit
+Int vlan 67
+ no shut
+ ip add 10.0.63.254 255.255.224.0
+ip dhcp excluded-add 10.0.32.1 10.0.35.0
+ip dhcp pool JPMorgan.com
+ network 10.0.32.0 255.255.224.0
+ default-router 10.0.63.254
+ domain-name JPMorgan.com
+ end
+ 
+ 
+  a2:
+ config t
+ Int e1/0
+  sw mode access
+  swi access vlan 67
+ end
+ 
+ p2
+	config t
+	int e1/0
+	ip add dhcp
+	no shut

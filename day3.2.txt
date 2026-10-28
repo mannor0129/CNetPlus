@@ -1,0 +1,70 @@
+en
+conf t
+NO ip access-list standard NOPORN 
+ip access-list standard NOPORN 
+DENY 66.254.0.0 0.0.255.255
+DENY 104.21.0.0 0.0.255.255
+DENY 172.67.146.93 0.0.0.0
+DENY 104.16.4.81 0.0.0.0
+DENY 89.222.127.8 0.0.0.0
+DENY 64.98.135.95 0.0.0.0
+DENY 208.77.0.0 0.0.255.25
+permit any
+int G2
+ip access-group NOPORN in
+end
+
+
+
+conf t
+no ip access-group NOPORN in
+en
+
+
+config t
+NO ip access-list standard NOISKUL
+ip access-list standard NOISKUL
+DENY   136.158.183.7 0.0.255.255
+DENY   50.6.160.0 0.0.255.255
+DENY   184.168.125.0 0.0.255.255
+DENY   155.137.92.0 0.0.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOISKUL in
+end
+
+
+config t
+NO ip access-list standard NOISKUL
+ip access-list standard NOISKUL
+DENY   136.158.183.7 0.0.255.255
+DENY   50.6.160.0 0.0.255.255
+DENY   184.168.125.0 0.0.255.255
+DENY   155.137.92.0 0.0.255.255
+Permit Any
+Int G1
+ no ip access-group NOISKUL in
+end
+
+
+www.thepiratebay.org   162.159.   104.21
+www.limetorrents.com    172.67.   84.32   104.21.
+www.freeanimeonline.com   76.223.  13.248
+www.torlock2.com   104.21.
+www.hentaisites.com 104.21.   
+www.iptorrents.com  104.26.   95.211.
+
+
+
+config t
+NO ip access-list standard NOTORS
+ip access-list standard NOTORS
+DENY   162.159.104.21 0.0.255.255
+DENY   76.223.13.248 0.0.255.255
+DENY   __.__.__.__   0.0.255.255
+DENY   __.__.__.__   0.0.255.255
+DENY   __.__.__.__   0.0.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOTORS in
+end
